@@ -1,9 +1,4 @@
-export default function Task({
-  changeStatus,
-  description,
-  isCompleted,
-  title,
-}) {
+const Task = ({ changeStatus, description, isCompleted, title }) => {
   return (
     <div
       className={`w-84 border-2 rounded-md flex flex-col gap-3 p-4 text-lg ${
@@ -18,13 +13,13 @@ export default function Task({
         {description}
       </p>
       <button
-        className={`px-4 py-2 text-white rounded-md cursor-pointer ${
-          isCompleted ? 'bg-green-500' : 'bg-indigo-600'
-        }`}
+        className={`px-4 py-2 text-white rounded-md cursor-pointer ${isCompleted ? 'bg-green-500' : 'bg-indigo-600'}`}
         onClick={changeStatus}
       >
-        {isCompleted ? 'Undo' : 'Mark as completed'}
+        {isCompleted ? 'Undo' : 'Complete'}
       </button>
     </div>
   );
-}
+};
+
+export default Task;
