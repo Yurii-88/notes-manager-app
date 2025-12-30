@@ -1,16 +1,8 @@
-import { useState } from 'react';
-import { tasks as mockTasks } from '../data/tasks';
 import Task from './Task';
 
-const TaskList = () => {
-  const [tasks, setTasks] = useState(mockTasks);
-  const handleStatusChange = (taskId) => {
-    const updatedTasks = tasks.map((task) => (task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task));
-    setTasks(updatedTasks);
-  };
-
+const TaskList = ({ tasks, handleStatusChange }) => {
   return (
-    <>
+    <div className='w-1/3 m-2 flex flex-col gap-2'>
       {tasks.map(({ description, id, isCompleted, title }) => (
         <Task
           key={id}
@@ -20,7 +12,7 @@ const TaskList = () => {
           changeStatus={() => handleStatusChange(id)}
         />
       ))}
-    </>
+    </div>
   );
 };
 
