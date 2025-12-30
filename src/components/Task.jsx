@@ -1,23 +1,23 @@
 const Task = ({ changeStatus, description, isCompleted, title }) => {
   return (
     <div
-      className={`w-84 border-2 rounded-md flex flex-col gap-3 p-4 text-lg ${
+      className={`border-2 h-28 rounded-md flex flex-col items-center p-2 text-sm ${
         isCompleted ? 'border-green-500' : 'border-indigo-600'
       }`}
     >
-      <h2 className='bg-lime-200 p-2 rounded-md font-mono text-justify'>
-        <span className='font-bold'>Title:</span> {title}
-      </h2>
-      <p className='bg-cyan-300 p-2 rounded-md font-mono text-justify'>
+      <div className='w-full p-2 flex items-center gap-2'>
+        <input
+          type='checkbox'
+          className='h-4 w-4 accent-green-400 rounded'
+          checked={isCompleted}
+          onChange={changeStatus}
+        />
+        <span className='font-bold'>{title}</span>
+      </div>
+      <p className='border-indigo-600 p-2 w-full rounded-md font-mono text-justify'>
         <span className='font-bold'>Description: </span>
         {description}
       </p>
-      <button
-        className={`px-4 py-2 text-white rounded-md cursor-pointer ${isCompleted ? 'bg-green-500' : 'bg-indigo-600'}`}
-        onClick={changeStatus}
-      >
-        {isCompleted ? 'Undo' : 'Complete'}
-      </button>
     </div>
   );
 };
